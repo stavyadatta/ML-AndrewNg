@@ -1,0 +1,45 @@
+function J = computeCost(X, y, theta)
+%COMPUTECOST Compute cost for linear regression
+%   J = COMPUTECOST(X, y, theta) computes the cost of using theta as the
+%   parameter for linear regression to fit the data points in X and y
+
+% Initialize some useful values
+m = length(y); % number of training examples
+
+% You need to return the following variables correctly 
+J = 0;
+
+% ====================== YOUR CODE HERE ======================
+% Instructions: Compute the cost of a particular choice of theta
+%               You should set J to the cost.
+
+
+% for i = 1:1500
+%     disp(theta)
+%     summation1 = h_sum(m, theta, X, y, 1);
+%     summation2 = h_sum(m, theta, X, y, 2);
+%     theta(1,1) = theta(1,1) - 0.01 * 1/m * summation1;
+%     theta(2,1) = theta(2,1) - 0.01 * 1/m * summation2;
+% end
+
+
+sum = 0;
+for j = 1:m
+  h_of_x = X(j,1) * theta(1,1) + X(j,2) * theta(2,1) ;
+  sum = sum + (h_of_x - y(j))^2;
+end
+J = 1/(2 * m) * sum;
+% =========================================================================
+
+end
+
+function sum = h_sum(m, theta, X, y, feature_rank)
+    theta0 = theta(1,1);
+    theta1 = theta(2,1);
+    sum = 0;
+    for i = 1:m
+       h_of_x = X(i,1) * theta0 + X(i,2) * theta1;
+       medium_sum = (h_of_x - y(i)) * X(i, feature_rank);
+       sum = sum + medium_sum;
+    end    
+end 
