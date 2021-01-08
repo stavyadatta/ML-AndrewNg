@@ -25,8 +25,7 @@ h = sigmoid(X * theta);
 J = costFunction(theta, X, y) + lambda/(2*m) * sumsqr(theta_no_1);
 
 grad_init = 1/m * (X' * (h - y));
-grad = grad_init(2:numel(grad_init)) + lambda/m * theta_no_1;
-grad = [grad_init(1); grad];
+grad_
 
 
 % =============================================================
